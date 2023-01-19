@@ -13,10 +13,17 @@ namespace LuckySpin.Controllers
         //TODO: 0) Register the Repository class as a service in Program.cs 
         //TODO: 1) add an instance variable here of type Repository
 
+        Repository repository = new Repository
+        {
+
+        };
 
         /***
          * Constructor - TODO: 2) call for a DIJ Repository object to be passed to the constructor
          **/
+
+
+
         public SpinnerController()
         {
             //TODO: 3) save the DIJ Repository object into your instance variable
