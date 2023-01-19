@@ -63,8 +63,9 @@ namespace LuckySpin.Controllers
         [HttpGet]
         public IActionResult LuckList()
         {
+            
                 //TODO: Pass the repository's Player Spins to the LuckList View
-                return View();
+                return View(repository.PlayerSpins);
         }
 
     }
