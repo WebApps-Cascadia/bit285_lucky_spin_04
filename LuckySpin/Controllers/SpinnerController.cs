@@ -34,9 +34,12 @@ namespace LuckySpin.Controllers
         [HttpPost]
         public IActionResult Index(Player player)
         {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
 
-
-            return View();
+            return RedirectToAction("Spin");
         }
 
         /***
