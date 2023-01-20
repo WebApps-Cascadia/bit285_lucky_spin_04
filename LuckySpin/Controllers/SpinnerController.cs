@@ -13,10 +13,7 @@ namespace LuckySpin.Controllers
         //TODO: 0) Register the Repository class as a service in Program.cs 
         //TODO: 1) add an instance variable here of type Repository
 
-        Repository repository = new Repository
-        {
-
-        };
+        Repository repository = new Repository();
 
         /***
          * Constructor - TODO: 2) call for a DIJ Repository object to be passed to the constructor
@@ -24,8 +21,9 @@ namespace LuckySpin.Controllers
 
 
 
-        public SpinnerController()
+        public SpinnerController(Repository repository)
         {
+            this.repository = repository;
             //TODO: 3) save the DIJ Repository object into your instance variable
         }
 
@@ -46,7 +44,7 @@ namespace LuckySpin.Controllers
                 return View();
             }
 
-            return RedirectToAction("Spin");
+            return RedirectToAction("Spin", player);
         }
 
         /***
@@ -58,6 +56,7 @@ namespace LuckySpin.Controllers
             //Create a new Spin with the player
             Spin spin = new Spin { Player = player };
             //TODO: Add to LuckList
+            repository.AddSpin(spin);
             
 
             return View("Spin", spin);
@@ -70,7 +69,7 @@ namespace LuckySpin.Controllers
         public IActionResult LuckList()
         {
                 //TODO: Pass the repository's Player Spins to the LuckList View
-                return View();
+                return View(repository.PlayerSpins);
         }
 
     }
